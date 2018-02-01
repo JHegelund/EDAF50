@@ -1,5 +1,9 @@
 #include "coding.h"
 
+Coding::Coding() {}
+
+Coding::~Coding() {}
+
 unsigned char encode(unsigned char c){
   return c + 1;
 }
