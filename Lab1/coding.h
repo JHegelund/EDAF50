@@ -12,9 +12,9 @@ public:
 
 	std::string do_decode(std::string s);
 
-	static unsigned char encode(unsigned char s);
+	//static unsigned char encode(unsigned char s);
 
-	static unsigned char decode(unsigned char s);
+	//static unsigned char decode(unsigned char s);
 
 	bool test_coding();
 };

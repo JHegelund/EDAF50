@@ -59,6 +59,7 @@ void List::remove(int d, DeleteFlag df) {
 	        delete curr;
 	        return;
       }
+
       prev = curr;
       curr = curr->next;
   }
