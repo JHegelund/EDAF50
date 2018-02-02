@@ -5,9 +5,9 @@
 using std::cout;
 using std::endl;
 
-unsigned char decode(unsigned char c){
+/**unsigned char decode(unsigned char c){
   return c - 1;
-}
+}**/
 
 int main(int argc, char** argv)
 {

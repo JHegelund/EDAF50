@@ -15,7 +15,7 @@ CXXFLAGS =  -O2 -Wall -Wextra -pedantic-errors -Wold-style-cast
 CXXFLAGS += -std=c++11
 CXXFLAGS += -g
 CXXFLAGS += $(DEPFLAGS)
-LDFLAGS = -g -L
+LDFLAGS = -g -L.
 LDLIBS = -llab1
 #CPPFLAGS += -stdlib=libc++
 #CXXFLAGS += -stdlib=libc++
@@ -31,8 +31,7 @@ test: test_coding
 
 # Targets rely on implicit rules for compiling and linking
 ltest: ltest.o list.o
-#test_coding: test_coding.o coding.o
-test_coding: test_coding.o
+test_coding: test_coding.o coding.o
 print_argv: print_argv.o
 hello: hello.o
 encode: encode.o
