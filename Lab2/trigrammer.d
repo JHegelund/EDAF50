@@ -1,0 +1,1 @@
+trigrammer.o: trigrammer.cc
