@@ -16,9 +16,12 @@ string Word::get_word() const {
 
 unsigned int Word::get_matches(const vector<string>& t) const {
 	int matches = 0;
-	for(string &str : t){
-		if(find(trigrams.begin()+matches, trigrams.end(), str)){
-			matches++;
+	for(auto &str : t){
+		for (int i = matches; i < trigrams.size(); ++i)
+		{
+			if(str.compare(trigrams.at(i))){
+				matches++;
+			}
 		}
 	}
 	return matches;
