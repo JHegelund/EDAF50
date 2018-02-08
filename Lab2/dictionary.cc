@@ -7,39 +7,44 @@
 #include "dictionary.h"
 #include <fstream>
 #include <sstream>
+#include <map>
 
-using std::string;
-using std::vector;
+using namespace std;
 
 Dictionary::Dictionary() {
 	std::ifstream fin;
-	words = std::map<int, vector<Word>>;
-	fin.open("Words.txt");
+	words = std::map<int, vector<Word>>();
+	fin.open("words.txt");
 	while(fin.is_open()){
 		string line;
 		while(std::getline(fin, line)){
-			std::istringstream iss(line);
-			string word;
-			iss >> word;
-			int tris;
-			iss >> tris;
-			vector<string> trigrams[tris];
-			for(int i = 0; i < tris; i++){
-				iss >> trigrams[i];
-			}
-			Word w(word, trigrams);
+			Word w(Dictionary::wordify(line));
 			int size = w.get_word().size();
-			if(!words.find(size)){
+			if(words.find(size)==words.end()){
 				vector<Word> v;
 				v.push_back(w);
-				words.add(size, v);
+				words.insert(std::pair<int, vector<Word>>(size, v));
 			}else{
-				words.get(size).push_back(w);
+				words[size].push_back(w);
 			}
 		}
+		std::cout << words[5].at(39).get_word() << endl;
 		fin.close();
 	}
-	return false;
+}
+
+Word Dictionary::wordify(const string& str){
+	std::istringstream iss(str);
+	string word;
+	iss >> word;
+	int tris;
+	iss >> tris;
+	vector<string> trigrams(tris);
+	for(int i = 0; i < tris; i++){
+		iss >> trigrams[i];
+	}
+	Word w(word, trigrams);
+	return w;
 }
 
 bool Dictionary::contains(const string& word) const {
@@ -61,7 +66,7 @@ bool Dictionary::contains(const string& word) const {
 	return false;
 }
 
-vector<string> Dictionary::get_suggestions(const string& word) const {
+vector<string> Dictionary::get_suggestions(const string& word)  const{
 	vector<string> suggestions;	
 	return suggestions;
 }
