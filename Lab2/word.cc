@@ -23,7 +23,7 @@ unsigned int Word::get_matches(const vector<string>& t) const {
 	unsigned int matches = 0;
 	for(auto &str : t){
 		for (int i = matches; i < trigrams.size(); ++i){
-			if(str.compare(trigrams.at(i))==0){
+			if(str == trigrams.at(i)){
 				matches++;
 			}
 		}
