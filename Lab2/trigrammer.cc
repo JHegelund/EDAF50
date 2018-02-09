@@ -3,12 +3,15 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
-using std::cout;
-using std::endl;
+#include "trigrammer.h"
 
 using namespace std;
 
-vector<string> trigram(const string &s){
+trigrammer::trigrammer(){
+
+}
+
+vector<string> trigrammer::trigram(const string &s){
     if(s.size() <= 3){
          vector<string> triagrams;
          return triagrams;
@@ -23,7 +26,7 @@ vector<string> trigram(const string &s){
     return triagrams;
 }
 
-vector<string> sort(vector<string> s){
+vector<string> trigrammer::sort(vector<string> s){
     vector<string> sorted(s.size());
     if(s.empty()) return sorted;
     for(int i = 0; i < s.size(); i++){
@@ -39,7 +42,7 @@ vector<string> sort(vector<string> s){
 }
 
 
-int main()
+int trigrammer::main()
 {
     string line;
     ifstream fin("words");
