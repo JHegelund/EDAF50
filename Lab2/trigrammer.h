@@ -9,7 +9,6 @@ public:
 	trigrammer();
 	std::vector<std::string> trigram(const std::string &s);
 	std::vector<std::string> sort(std::vector<std::string> s);
-	int main();
 private:
 
 };

@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <algorithm>
+#include <cassert>
 #include "word.h"
 #include "dictionary.h"
 #include <fstream>
@@ -69,6 +70,7 @@ vector<string> Dictionary::get_suggestions(const string& word) const{
 	vector<string> suggestions;	
 	add_trigram_suggestions(suggestions, word);
 	rank_suggestions(suggestions, word);
+	trim_suggestions(suggestions);
 	return suggestions;
 }
 
@@ -91,7 +93,8 @@ void Dictionary::add_trigram_suggestions(vector<string>& suggestions, const stri
 }
 
 void Dictionary::rank_suggestions(vector<string>& suggestions, const string word) const{
-	vector<pair<int, string>> costVec(suggestions.size());
+	vector<pair<int, string>> costVec;
+	costVec.reserve(suggestions.size());
 	int a[26][26];
 	a[0][0]=0;
 	int cost;
@@ -118,7 +121,16 @@ void Dictionary::rank_suggestions(vector<string>& suggestions, const string word
 		costVec.push_back(make_pair(cost, str));
 	}	
 	sort(costVec.begin(), costVec.end());
-	for(int i = 0; i < costVec.size(); i++){
-		suggestions.at(i) = costVec.at(i).second;
+	assert(costVec.size() == suggestions.size());
+	int i = 0;
+	for(auto &par : costVec){
+		suggestions.at(i) = par.second;
+		i++;
+	}
+}
+
+void Dictionary::trim_suggestions(vector<string> &suggestions) const{
+	if(suggestions.size() > 5){
+		suggestions.resize(5);
 	}
 }
