@@ -16,6 +16,7 @@ private:
 	std::map<int, std::vector<Word>> words;
 	void add_trigram_suggestions(std::vector<std::string>& suggestions, const std::string word) const;
 	void rank_suggestions(std::vector<std::string>& suggestions, const std::string word) const;
+	void trim_suggestions(std::vector<std::string>& suggestions) const;
 };
 
 #endif

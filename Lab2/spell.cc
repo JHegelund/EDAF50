@@ -22,7 +22,7 @@ void check_word(const string& word, const Dictionary& dict)
         } else {
             cout << "Wrong. Suggestions:" << endl;
             for (const auto& w : suggestions) {
-                cout << "    " << w << endl;
+                cout << "-    " << w << endl;
             }
         }
     }

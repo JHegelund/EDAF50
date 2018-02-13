@@ -21,7 +21,7 @@ LDFLAGS = -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS =  trigrammer spell
+PROGS =  trigramMain spell
 
 all: $(PROGS)
 
@@ -29,8 +29,8 @@ all: $(PROGS)
 #	./test_coding
 
 # Targets rely on implicit rules for compiling and linking
-trigrammer: trigrammer.o
-spell: spell.o dictionary.o
+spell: spell.o dictionary.o trigrammer.o word.o
+trigramMain: trigramMain.o trigrammer.o
 
 
 # Phony targets

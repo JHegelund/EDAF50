@@ -1,1 +1,3 @@
-trigrammer.o: trigrammer.cc
+trigrammer.o: trigrammer.cc trigrammer.h
+
+trigrammer.h:
