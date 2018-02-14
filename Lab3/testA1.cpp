@@ -15,11 +15,10 @@ int main(){
 	string temp1, temp2;
 	while(getline(correct, temp1)){
 		getline(trResult, temp2);
-		cout << temp1 << endl;
-		cout << temp2 << endl;
 		assert(temp1 == temp2);
 	}
 	correct.close();
 	trResult.close();
+	cout << "test passed succesfully" << endl;
 	return 0;
 }
