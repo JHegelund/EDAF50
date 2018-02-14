@@ -6,6 +6,7 @@ using std::cout;
 using std::endl;
 using std::setw;
 using std::setfill;
+using std::cin;
 
 /*
  * Prints the date d in the format yyyy-mm-dd. You shall replace this
