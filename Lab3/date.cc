@@ -1,5 +1,11 @@
 #include <ctime>  // time and localtime
+#include <iomanip> // for setw and setfill
+#include <iostream>
 #include "date.h"
+
+using std::cout;
+using std::setw;
+using std::setfill;
 
 int Date::daysPerMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
@@ -11,7 +17,13 @@ Date::Date() {
 	day = locTime->tm_mday;
 }
 
-Date::Date(int y, int m, int d): year(y), month(m), day(d) {}
+Date::Date(int y, int m, int d): year(y), month(m), day(d) {
+	if(m >= 1 && m <= 12 && d >= 1 && d <= daysPerMonth[m - 1]){
+		cout << "Correct" << std::endl;
+	} else {
+		throw std::invalid_argument("Invalid");
+	}
+}
 
 int Date::getYear() const {
 	return year;
@@ -25,35 +37,33 @@ int Date::getDay() const {
 	return day;
 }
 
-std::ostream& operator <<(std::ostream& os, const Date& d){
+std::ostream& operator<<(std::ostream& os, const Date& d){
 	cout << setw(4) << setfill('0') << d.getYear() << '-';
 	cout << setw(2) << setfill('0') << d.getMonth() << '-';
 	cout << setw(2) << setfill('0') << d.getDay();
+	return os;
 }
 
-std::istream& operator >>(std::istream is, Date& d){
-	int year, month, day;
+std::istream& operator>>(std::istream& is, Date& d){
+	int yearInput, monthInput, dayInput;
 	char char1, char2;
-	is >> year;
+	is >> yearInput;
 	is >> char1;
-	is >> month;
+	is >> monthInput;
 	is >> char2;
-	is >> day;
+	is >> dayInput;
 
-	if(month >= 1 && month <= 12 && day >= 1 && day < daysPerMonth[month]){
-		d.year = year;
-		d.month = month;
-		d.day = day;
-	} else {
-		is.setstate(ios_base::failbit);
+	try{
+		d = Date(yearInput, monthInput, dayInput);
+	} catch (const std::invalid_argument& e) {
+		is.setstate(std::ios_base::failbit);
 	}
-
 	return is;
 }
 
 void Date::next() {
 	day++;
-	if(daysPerMonth[month] < day){
+	if(daysPerMonth[month - 1] < day){
 		month++;
 		day = 1;
 		if(month > 12){
