@@ -21,16 +21,14 @@ LDFLAGS = -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS =  removetags primenbr
+PROGS =  removetags primenbr date_test
 
 all: $(PROGS)
-
-#test: test_coding
-#	./test_coding
 
 # Targets rely on implicit rules for compiling and linking
 removetags: removetags.o tagremover.o
 primenbr: primenbr.o
+date_test: date_test.o date.o
 
 
 # Phony targets

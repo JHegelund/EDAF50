@@ -18,10 +18,8 @@ Date::Date() {
 }
 
 Date::Date(int y, int m, int d): year(y), month(m), day(d) {
-	if(m >= 1 && m <= 12 && d >= 1 && d < daysPerMonth[m]){
-		year = y;
-		month = m;
-		day = d;
+	if(m >= 1 && m <= 12 && d >= 1 && d <= daysPerMonth[m - 1]){
+		cout << "Correct" << std::endl;
 	} else {
 		throw std::invalid_argument("Invalid");
 	}
@@ -39,14 +37,14 @@ int Date::getDay() const {
 	return day;
 }
 
-std::ostream& operator <<(std::ostream& os, const Date& d){
+std::ostream& operator<<(std::ostream& os, const Date& d){
 	cout << setw(4) << setfill('0') << d.getYear() << '-';
 	cout << setw(2) << setfill('0') << d.getMonth() << '-';
 	cout << setw(2) << setfill('0') << d.getDay();
 	return os;
 }
 
-std::istream& operator >>(std::istream is, Date& d){
+std::istream& operator>>(std::istream& is, Date& d){
 	int yearInput, monthInput, dayInput;
 	char char1, char2;
 	is >> yearInput;
@@ -65,7 +63,7 @@ std::istream& operator >>(std::istream is, Date& d){
 
 void Date::next() {
 	day++;
-	if(daysPerMonth[month] < day){
+	if(daysPerMonth[month - 1] < day){
 		month++;
 		day = 1;
 		if(month > 12){
