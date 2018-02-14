@@ -1,0 +1,1 @@
+primenbr.o: primenbr.cc
