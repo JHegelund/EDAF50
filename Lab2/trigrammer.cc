@@ -39,9 +39,4 @@ vector<string> trigrammer::sort(vector<string> s){
         sorted[index] = s[i];
     }
     return sorted;
-<<<<<<< HEAD
 }
-
-=======
-}
->>>>>>> 52e5acbabf83802d27082aaf7821815452bc8e51

@@ -1,8 +1,10 @@
 #include <iostream>
 #include <cstring>
 #include <regex>
+#include <fstream>
 #include "tagremover.h"
 
+using namespace std;
 TagRemover::TagRemover(std::istream &in) : instream(in) {
 }
 
@@ -11,12 +13,31 @@ void TagRemover::print(std::ostream &out){
 	std::string line;
 
 	while(std::getline(instream, line)){
-		output += line + "\n";
-
-		while(output.find("<") != std::string::npos){
-			auto i1 = output.find("<");
-			auto i2 = output.find(">");
-			output.erase(i1, (i2 - i1) + 1);
+		ifstream fin(line);
+		string test;
+		bool open_check = false;
+		cout << "yo";
+		if(fin.is_open()){
+			while(getline(fin, test)){
+				while((test.find("<")!= std::string::npos) && (test.find(">")!= std::string::npos)){			
+					auto i1 = output.find("<");
+					auto i2 = output.find(">");
+					test.erase(i1, (i2 - i1) + 1);
+				}
+				if(open_check && (test.find(">")!= std::string::npos)){		
+					auto i2 = output.find(">");
+					open_check = false;
+					test.erase(0, i2);
+				}else if(open_check){
+					test.erase(0, test.size());
+				}
+				if(test.find("<")!= std::string::npos){			
+					auto i1 = output.find("<");
+					open_check = true;
+					test.erase(i1, test.size());
+				}
+				output += test + '\n';
+			}
 		}
 
 		while(output.find("&lt;") != std::string::npos){
