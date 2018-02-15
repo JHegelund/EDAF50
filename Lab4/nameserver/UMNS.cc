@@ -1,14 +1,14 @@
-#include "MNS.h"
+#include "UMNS.h"
 
-MNS::MNS(){
-	serverNameMap = std::map<std::string, int>();
+UMNS::UMNS(){
+	serverNameMap = std::unordered_map<std::string, int>();
 }
 
-void MNS::insert(const HostName& hn, const IPAddress& ipa){
+void UMNS::insert(const HostName& hn, const IPAddress& ipa){
 	serverNameMap.insert(std::pair<std::string, int>(hn, ipa));
 }
 
-bool MNS::remove(const HostName& hn){
+bool UMNS::remove(const HostName& hn){
 	if (serverNameMap.erase(hn) == 1){
 		return true;
 	} else {
@@ -16,7 +16,7 @@ bool MNS::remove(const HostName& hn){
 	}
 }
 
-IPAddress MNS::lookup(const HostName& hn){
+IPAddress UMNS::lookup(const HostName& hn){
 	auto pos = serverNameMap.find(hn);
 	if (pos == serverNameMap.end()) {
     	return NON_EXISTING_ADDRESS;

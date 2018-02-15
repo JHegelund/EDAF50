@@ -1,21 +1,21 @@
-#ifndef MNS_H
-#define MNS_H
+#ifndef HNS_H
+#define HNS_H
 
 #include <string>
-#include <map>
+#include <unordered_map>
 #include "nameserverinterface.h"
 
 using HostName = std::string;
 using IPAddress = unsigned int;
 
-class MNS : public NameServerInterface{
+class HNS : public NameServerInterface{
 	public:
-		MNS();
+		HNS();
 		void insert(const HostName&, const IPAddress&);
 		bool remove(const HostName&);
 		IPAddress lookup(const HostName&);
 	private:
-		std::map<std::string, int> serverNameMap;
+		std::vector<std::vector<std::string>> v;
 };
 
 #endif
