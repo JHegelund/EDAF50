@@ -1,11 +1,11 @@
 #include "HNS.h"
 
 HNS::HNS(){
-	v = std::vector<std::vector<std::string>> v;
+	values = std::vector<std::pair<int, std::vector>();
 }
 
 void HNS::insert(const HostName& hn, const IPAddress& ipa){
-	v.insert(std::pair<std::string, int>(hn, ipa));
+	values.insert(make_pair(hash(ipa), hn>));
 }
 
 bool HNS::remove(const HostName& hn){

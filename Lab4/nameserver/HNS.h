@@ -15,7 +15,7 @@ class HNS : public NameServerInterface{
 		bool remove(const HostName&);
 		IPAddress lookup(const HostName&);
 	private:
-		std::vector<std::vector<std::string>> v;
+		std::vector<std::vector<std::string>> values;
 };
 
 #endif
