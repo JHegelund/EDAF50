@@ -4,6 +4,7 @@
 #include <string>
 #include "nameserverinterface.h"
 #include <vector> 
+#include <algorithm>    
 
 using HostName = std::string;
 using IPAddress = unsigned int;

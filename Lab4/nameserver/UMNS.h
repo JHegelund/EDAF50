@@ -13,7 +13,7 @@ class UMNS : public NameServerInterface{
 		UMNS();
 		void insert(const HostName&, const IPAddress&);
 		bool remove(const HostName&);
-		IPAddress lookup(const HostName&);
+		IPAddress lookup(const HostName&) const;
 	private:
 		std::unordered_map<std::string, int> serverNameMap;
 };

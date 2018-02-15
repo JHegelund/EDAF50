@@ -11,7 +11,7 @@ using IPAddress = unsigned int;
 class HNS : public NameServerInterface{
 	public:
 		HNS();
-		void insert(const HostName&, const IPAddress&);
+		void insert(const HostName&, const IPAddress&) const;
 		bool remove(const HostName&);
 		IPAddress lookup(const HostName&);
 	private:

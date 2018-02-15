@@ -16,7 +16,7 @@ bool UMNS::remove(const HostName& hn){
 	}
 }
 
-IPAddress UMNS::lookup(const HostName& hn){
+IPAddress UMNS::lookup(const HostName& hn) const{
 	auto pos = serverNameMap.find(hn);
 	if (pos == serverNameMap.end()) {
     	return NON_EXISTING_ADDRESS;
