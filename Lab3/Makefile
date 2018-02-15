@@ -21,7 +21,7 @@ LDFLAGS = -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS =  removetags primenbr date_test testA1 testA2 tostringtemp
+PROGS =  removetags primenbr date_test testA1 testA2 tostringtemp stringcast
 
 all: $(PROGS)
 
@@ -32,6 +32,7 @@ date_test: date_test.o date.o
 testA1: tagremover.o testA1.o
 testA2: primenbr.o testA2.o
 tostringtemp: tostringtemp.o date.o
+stringcast: stringcast.o date.o
 
 
 # Phony targets
