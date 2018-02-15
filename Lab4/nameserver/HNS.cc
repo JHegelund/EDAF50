@@ -1,7 +1,8 @@
 #include "HNS.h"
 
-HNS::HNS(){
-	values = std::vector<std::pair<int, std::vector>();
+HNS::HNS(int s){
+	values = std::vector<std::pair<int, std::vector<IPAddress>();
+	size=s;
 }
 
 void HNS::insert(const HostName& hn, const IPAddress& ipa){
@@ -25,4 +26,8 @@ IPAddress HNS::lookup(const HostName& hn) const{
     	return value;
 	}
 	return 0;
+}
+
+int HNS::hash(const IPAddress& ipa){
+	return hash<string>(ipa) % size;
 }
