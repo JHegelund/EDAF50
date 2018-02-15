@@ -3,6 +3,7 @@
 
 #include <string>
 #include "nameserverinterface.h"
+#include <vector> 
 
 using HostName = std::string;
 using IPAddress = unsigned int;
@@ -13,6 +14,8 @@ public:
 	void insert(const HostName&, const IPAddress&);
 	bool remove(const HostName&);
 	IPAddress lookup(const HostName&) const;
+private:
+	std::vector<std::pair<HostName, IPAddress>> db;
 };
 
 #endif
