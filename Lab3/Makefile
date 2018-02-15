@@ -27,7 +27,7 @@ all: $(PROGS)
 
 # Targets rely on implicit rules for compiling and linking
 removetags: removetags.o tagremover.o
-primenbr: primenbr.o
+primenbr: primenbrMain.o primenbr.o
 date_test: date_test.o date.o
 testA1: tagremover.o testA1.o
 testA2: primenbr.o testA2.o

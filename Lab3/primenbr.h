@@ -5,12 +5,12 @@
 
 class primenbr {
 public:
-	int main();
+	primenbr();
 	std::string toString(int);
 	std::string sievePrime(const unsigned long nbr);
 	std::string primes(const std::string& sievePrimeString);
 private:
-	std::istream &instream;
+
 };
 
 #endif
