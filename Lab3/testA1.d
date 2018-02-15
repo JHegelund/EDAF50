@@ -1,3 +1,3 @@
-testA1.o: testA1.cpp tagremover.h
+testA1.o: testA1.cc tagremover.h
 
 tagremover.h:
