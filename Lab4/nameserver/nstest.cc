@@ -58,9 +58,9 @@ int main() {
 	 * Test the hash name server.
 	 * The parameter to the constructor is the size of the
 	 * hash table.
-	 *
+	 */
 	HNS hns(4711);
 	test(hns);
 	cout << "Hash passed ..." << endl;
-	/** */
+	
 }
